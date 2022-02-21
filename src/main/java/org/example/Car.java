@@ -1,9 +1,6 @@
 package org.example;
-public class Car {
-    String name;
-    double mileage;
-    double fuellevel;
-    boolean damaged;
+public class Car extends Autovehicle {
+
     int DoorsNumber;
-    Engine engine;
+
 }
