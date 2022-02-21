@@ -10,10 +10,11 @@ public class App {
         System.out.println("Hello World!");
         Car car1 = new Car();
         car1.name = "Ferrari";
-        car1.mileage = 50;
+        car1.mileage = 13;
         car1.fuellevel = 60;
-        car1.damaged = true;
+        car1.damaged = false;
         car1.DoorsNumber = 4;
+        car1.maxSpeed = 200;
         System.out.println("Properties of car " + car1.name);
         System.out.println("Mileage: " + car1.mileage);
         System.out.println("Fuel level : " + car1.fuellevel);
@@ -23,10 +24,11 @@ public class App {
         //car2
         Car car2 = new Car();
         car2.name = "Dacia";
-        car2.mileage = 50;
-        car2.fuellevel = 60;
-        car2.damaged = true;
+        car2.mileage = 10;
+        car2.fuellevel = 100;
+        car2.damaged = false;
         car2.DoorsNumber = 4;
+        car2.maxSpeed = 200;
         System.out.println("Properties of car " + car2.name);
         System.out.println("Mileage: " + car2.mileage);
         System.out.println("Fuel level : " + car2.fuellevel);
@@ -50,10 +52,11 @@ public class App {
         System.out.println("Car2 engine manufacturer " + car2.engine.manufacturer);
         System.out.println("Car2 engine capacity " + car2.engine.capacity);
 
+        System.out.println("******************************");
         //invoking the accelerate method
         double distanceCar1 = car1.accelerate(60, 1);
 
-        double distanceCar2 = car2.accelerate(100, 1);
+        double distanceCar2 = car2.accelerate(130, 1);
 
         //create mechanic
         System.out.println("Engine name before repaired " + car1.engine.manufacturer);
