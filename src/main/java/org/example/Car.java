@@ -5,4 +5,5 @@ public class Car {
     double fuellevel;
     boolean damaged;
     int DoorsNumber;
+    Engine engine;
 }
