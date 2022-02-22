@@ -47,7 +47,7 @@ public class Vehicle {
         totalTraveledDistance += distance;
         System.out.println("Total traveled distance is " + totalTraveledDistance);
 
-        System.out.println("Is damaged the car ?" + damaged);
+        System.out.println("Is damaged the car ? " + damaged);
 
 
         double usedFuel = distance * mileage * mileageMultiplier / 100;

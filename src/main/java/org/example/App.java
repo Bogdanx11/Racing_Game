@@ -6,9 +6,36 @@ package org.example;
  */
 public class App {
     public static void main(String[] args) {
+
+        Game game = new Game();
+        game.start();
+/**
+        //autovehicul
+        Engine engine3 = new Engine();
+        engine3.manufacturer = "vw";
+        engine3.capacity = 2000;
+        Autovehicle autovehicul1 = new Autovehicle(engine3);
+
+
+        //engine1
+        Engine engine1 = new Engine();
+        engine1.manufacturer = "Valeo";
+        engine1.capacity = 3000;
+
+        System.out.println("Car1 engine manufacturer " + engine1.manufacturer);
+        System.out.println("Car1 engine capacity " + engine1.capacity);
+
+
+        //engine2
+        Engine engine2 = new Engine();
+        engine2.manufacturer = "Bosch";
+        engine2.capacity = 4000;
+
+
+
         //car1
         System.out.println("Hello World!");
-        Car car1 = new Car();
+        Car car1 = new Car(engine1);
         car1.name = "Ferrari";
         car1.mileage = 13;
         car1.fuellevel = 60;
@@ -22,7 +49,7 @@ public class App {
         System.out.println("Doors: " + car1.DoorsNumber);
 
         //car2
-        Car car2 = new Car();
+        Car car2 = new Car(engine2);
         car2.name = "Dacia";
         car2.mileage = 10;
         car2.fuellevel = 100;
@@ -35,22 +62,9 @@ public class App {
         System.out.println("Damaged: " + car2.damaged);
         System.out.println("Doors: " + car2.DoorsNumber);
 
-        //engine1
-        Engine engine1 = new Engine();
-        engine1.manufacturer = "Valeo";
-        engine1.capacity = 3000;
-        car1.engine = engine1;
 
-        System.out.println("Car1 engine manufacturer " + engine1.manufacturer);
-        System.out.println("Car1 engine capacity " + engine1.capacity);
 
-        //engine2
-        car2.engine = new Engine();
-        car2.engine.manufacturer = "Bosch";
-        car2.engine.capacity = 4000;
 
-        System.out.println("Car2 engine manufacturer " + car2.engine.manufacturer);
-        System.out.println("Car2 engine capacity " + car2.engine.capacity);
 
         System.out.println("******************************");
         //invoking the accelerate method
@@ -63,6 +77,6 @@ public class App {
         Mechanic mechanic1 = new Mechanic();
         System.out.println("Engine name after repaired " + car1.engine.manufacturer);
         mechanic1.repair(car1);
-
+*/
     }
 }
