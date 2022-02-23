@@ -5,7 +5,7 @@ import org.example.utils.ScannerUtil;
 public class Game {
 
     //create scanner
-    ScannerUtil scannerUtil = new ScannerUtil();
+
 
 
     //start
@@ -22,13 +22,13 @@ public class Game {
     //number of players
     private int getPlayerCountFromUser() {
         System.out.println("Please enter number of players : ");
-        return scannerUtil.nextIntAndMoveToTheNextLine();
+        return ScannerUtil.nextIntAndMoveToTheNextLine();
     }
 
 
     //vehicle name
     private String getVehicleNameFromUser(){
         System.out.println("Please enter vehicle name: ");
-       return scannerUtil.nextLine();
+       return ScannerUtil.nextLine();
     }
 }

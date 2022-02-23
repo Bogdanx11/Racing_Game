@@ -1,5 +1,7 @@
 package org.example;
 
+import java.time.LocalDate;
+
 public class Vehicle {
 
     //static variable
@@ -13,6 +15,7 @@ public class Vehicle {
     boolean damaged;
     double totalTraveledDistance;
     double maxSpeed;
+    LocalDate manufacturingDate;
 
 
     //constructors

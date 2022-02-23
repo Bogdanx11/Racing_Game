@@ -3,16 +3,16 @@ package org.example.utils;
 import java.util.Scanner;
 
 public class ScannerUtil {
-    Scanner scanner = new Scanner(System.in);
+   static final Scanner SCANNER = new Scanner(System.in);
 
-    public int nextIntAndMoveToTheNextLine() {
-        int integer = scanner.nextInt();
-        scanner.nextLine();
+    public static int nextIntAndMoveToTheNextLine() {
+        int integer = SCANNER.nextInt();
+        SCANNER.nextLine();
         return integer;
     }
 
-    public String nextLine() {
-        return scanner.nextLine();
+    public static String nextLine() {
+        return SCANNER.nextLine();
     }
 
 }
