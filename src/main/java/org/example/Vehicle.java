@@ -1,12 +1,26 @@
 package org.example;
 
 public class Vehicle {
+
+    //static variable
+    static int totalVehicleCount;
+
+
+    //instance variables
     String name;
     double mileage;
     double fuellevel;
     boolean damaged;
     double totalTraveledDistance;
     double maxSpeed;
+
+
+    //constructors
+
+
+    public Vehicle() {
+        totalVehicleCount++;
+    }
 
     // accelerate method
     public double accelerate(double speed, double timeInHours){

@@ -1,5 +1,7 @@
 package org.example;
 
+
+
 /**
  * Hello world!
  *
@@ -7,7 +9,7 @@ package org.example;
 public class App {
     public static void main(String[] args) {
 
-        Game game = new Game();
+    Game game = new Game();
         game.start();
 /**
         //autovehicul
