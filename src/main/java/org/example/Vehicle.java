@@ -4,18 +4,85 @@ import java.time.LocalDate;
 
 public class Vehicle {
 
+
     //static variable
-    static int totalVehicleCount;
+    private static int totalVehicleCount;
+
+
 
 
     //instance variables
-    String name;
-    double mileage;
-    double fuellevel;
-    boolean damaged;
-    double totalTraveledDistance;
-    double maxSpeed;
-    LocalDate manufacturingDate;
+    private String name;
+    private double mileage;
+    private double fuellevel;
+    private boolean damaged;
+    private double totalTraveledDistance;
+    private double maxSpeed;
+    private LocalDate manufacturingDate;
+
+
+    //getter for read-only variable totalVehicleCount
+    public static int getTotalVehicleCount() {
+        return totalVehicleCount;
+    }
+
+
+    //getter and setter for variables
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
+    }
+
+    public double getFuellevel() {
+        return fuellevel;
+    }
+
+    public void setFuellevel(double fuellevel) {
+        this.fuellevel = fuellevel;
+    }
+
+    public boolean isDamaged() {
+        return damaged;
+    }
+
+    public void setDamaged(boolean damaged) {
+        this.damaged = damaged;
+    }
+
+    public double getTotalTraveledDistance() {
+        return totalTraveledDistance;
+    }
+
+    public void setTotalTraveledDistance(double totalTraveledDistance) {
+        this.totalTraveledDistance = totalTraveledDistance;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(double maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public LocalDate getManufacturingDate() {
+        return manufacturingDate;
+    }
+
+    public void setManufacturingDate(LocalDate manufacturingDate) {
+        this.manufacturingDate = manufacturingDate;
+    }
 
 
     //constructors
@@ -26,38 +93,37 @@ public class Vehicle {
     }
 
     // accelerate method
-    public double accelerate(double speed, double timeInHours){
+    public double accelerate(double speed, double timeInHours) {
 
         double mileageMultiplier = 1;
         //mileage condition
-        if(speed>120){
-            mileageMultiplier = speed/100;
+        if (speed > 120) {
+            mileageMultiplier = speed / 100;
         }
 
 
         //damage condition
-        if(damaged){
+        if (damaged) {
             System.out.println("You cannot accelerate, the car is broken!");
             return 0;
         }
 
 
         //fuel level condition
-        if (fuellevel<=0){
+        if (fuellevel <= 0) {
             System.out.println("You cannot accelerate.You ran out of gas.");
             return 0;
         }
 
 
-
         //speed condition
-        if (speed > maxSpeed ) {
+        if (speed > maxSpeed) {
             System.out.println("Max speed exceeded.");
             return 0;
         }
 
         //return
-        System.out.println("Vehicle " + name + " is accelerating with " + speed + " for " + timeInHours + " h." );
+        System.out.println("Vehicle " + name + " is accelerating with " + speed + " for " + timeInHours + " h.");
 
         double distance = speed * timeInHours;
 
@@ -73,4 +139,6 @@ public class Vehicle {
         System.out.println("Remaining fuel level is " + fuellevel);
         return distance;
     }
+
+
 }

@@ -1,7 +1,17 @@
 package org.example;
 
 public class Autovehicle extends Vehicle{
-    Engine engine;
+
+    private Engine engine;
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
 
 
     public Autovehicle(Engine engine){
