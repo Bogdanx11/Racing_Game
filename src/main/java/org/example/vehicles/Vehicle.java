@@ -1,4 +1,4 @@
-package org.example;
+package org.example.vehicles;
 
 import java.time.LocalDate;
 
@@ -16,7 +16,7 @@ public class Vehicle {
     private double mileage;
     private double fuellevel;
     private boolean damaged;
-    private double totalTraveledDistance;
+    protected double totalTraveledDistance;
     private double maxSpeed;
     private LocalDate manufacturingDate;
 
@@ -90,6 +90,11 @@ public class Vehicle {
 
     public Vehicle() {
         totalVehicleCount++;
+    }
+
+
+    public double accelerate(double speed){
+        return accelerate(speed,1);
     }
 
     // accelerate method
