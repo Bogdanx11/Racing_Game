@@ -52,7 +52,7 @@ public class Vehicle {
         this.fuellevel = fuellevel;
     }
 
-    public boolean isDamaged() {
+    public boolean isDamaged(boolean b) {
         return damaged;
     }
 
@@ -145,5 +145,23 @@ public class Vehicle {
         return distance;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", mileage=" + mileage +
+                ", fuellevel=" + fuellevel +
+                ", damaged=" + damaged +
+                ", totalTraveledDistance=" + totalTraveledDistance +
+                ", maxSpeed=" + maxSpeed +
+                ", manufacturingDate=" + manufacturingDate +
+                '}';
+    }
 
+    //reset
+    protected Vehicle reset(){
+        totalTraveledDistance = 0;
+        damaged = false;
+        return this;
+    }
 }

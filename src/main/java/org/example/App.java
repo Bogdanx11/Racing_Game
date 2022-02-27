@@ -3,6 +3,7 @@ package org.example;
 
 import org.example.vehicles.Autovehicle;
 import org.example.vehicles.Car;
+import org.example.vehicles.cheater.CheatingVehicles;
 
 /**
  * Hello world!
@@ -11,9 +12,13 @@ import org.example.vehicles.Car;
 public class App {
     public static void main(String[] args) {
 
-   Game game = new Game();
-        game.start();
+        CheatingVehicles cheatingVehicles = new CheatingVehicles();
+        cheatingVehicles.setName("Cheater");
+        cheatingVehicles.accelerate(60,1);
 
+ /**  Game game = new Game();
+        game.start();
+*/
 /**
         //autovehicul
         Engine engine3 = new Engine();
@@ -21,12 +26,9 @@ public class App {
         engine3.capacity = 2000;
         Autovehicle autovehicul1 = new Autovehicle(engine3);
 
+*/
 
-        //engine1
-        Engine engine1 = new Engine();
-        engine1.manufacturer = "Valeo";
-        engine1.capacity = 3000;
-
+/**
         System.out.println("Car1 engine manufacturer " + engine1.manufacturer);
         System.out.println("Car1 engine capacity " + engine1.capacity);
 
@@ -37,16 +39,23 @@ public class App {
         engine2.capacity = 4000;
 
 
-
+*/
+/**
+//engine1
+        Engine engine1 = new Engine();
+        engine1.setManufacturer("Valeo");
+        engine1.setCapacity(3000);
         //car1
-        System.out.println("Hello World!");
-        Car car1 = new Car(engine1);
-        car1.name = "Ferrari";
-        car1.mileage = 13;
-        car1.fuellevel = 60;
-        car1.damaged = false;
-        car1.DoorsNumber = 4;
-        car1.maxSpeed = 200;
+
+        Car car1 = new Car();
+        car1.setName("Ferrari");
+        car1.setMileage(13);
+        car1.setFuellevel(50);
+        car1.isDamaged(false);
+        car1.setDoorsNumber(4);
+        car1.setMaxSpeed(200);
+        System.out.println(car1);
+        /**
         System.out.println("Properties of car " + car1.name);
         System.out.println("Mileage: " + car1.mileage);
         System.out.println("Fuel level : " + car1.fuellevel);
@@ -61,6 +70,8 @@ public class App {
         car2.damaged = false;
         car2.DoorsNumber = 4;
         car2.maxSpeed = 200;
+         */
+        /**
         System.out.println("Properties of car " + car2.name);
         System.out.println("Mileage: " + car2.mileage);
         System.out.println("Fuel level : " + car2.fuellevel);

@@ -20,4 +20,12 @@ public class Engine {
   }
 
   private int capacity;
+
+  @Override
+  public String toString() {
+    return "Engine{" +
+            "manufacturer='" + manufacturer + '\'' +
+            ", capacity=" + capacity +
+            '}';
+  }
 }

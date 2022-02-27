@@ -22,4 +22,12 @@ public class Car extends Autovehicle {
     public Car(Engine engine) {
         super(engine);
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "engine=" + engine +
+                ", DoorsNumber=" + DoorsNumber +
+                "} " + super.toString();
+    }
 }
