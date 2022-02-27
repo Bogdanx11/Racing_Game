@@ -21,6 +21,7 @@ public class CheatingVehicles extends Vehicle {
     //cheat method
     public void cheat(){
         totalTraveledDistance = totalTraveledDistance*2;
+        System.out.println("user has cheated");
     }
 
     //reset method

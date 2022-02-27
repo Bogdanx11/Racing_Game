@@ -3,6 +3,7 @@ package org.example;
 
 import org.example.vehicles.Autovehicle;
 import org.example.vehicles.Car;
+import org.example.vehicles.Vehicle;
 import org.example.vehicles.cheater.CheatingVehicles;
 
 /**
@@ -12,10 +13,16 @@ import org.example.vehicles.cheater.CheatingVehicles;
 public class App {
     public static void main(String[] args) {
 
-        CheatingVehicles cheatingVehicles = new CheatingVehicles();
+        Vehicle cheatingVehicles = new CheatingVehicles();
         cheatingVehicles.setName("Cheater");
         cheatingVehicles.accelerate(60,1);
 
+        //type casting
+        //verification of type casting
+        if(cheatingVehicles instanceof CheatingVehicles) {
+
+            ((CheatingVehicles) cheatingVehicles).cheat();
+        }
  /**  Game game = new Game();
         game.start();
 */

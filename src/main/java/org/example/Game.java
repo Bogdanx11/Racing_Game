@@ -1,10 +1,12 @@
 package org.example;
 
 import org.example.utils.ScannerUtil;
+import org.example.vehicles.Vehicle;
 
 public class Game {
 
-    //create scanner
+    private Vehicle competitor1;
+    private Vehicle competitor2;
 
 
 
