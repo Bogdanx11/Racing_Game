@@ -3,9 +3,15 @@ package org.example;
 import org.example.utils.ScannerUtil;
 import org.example.vehicles.Vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Game {
 
     private Track[] tracks = new Track[3];
+
+    private List<Vehicle> competitors = new ArrayList<>();
 
 
 
@@ -18,11 +24,24 @@ public class Game {
         Track selectedTrack = getSelectedTrackFromUser();
 
         System.out.println("Selected Track: "+ selectedTrack.getName());
-        int playerCount = getPlayerCountFromUser();
-        System.out.println("Number of players: " +playerCount );
-        String vehicleName = getVehicleNameFromUser();
-        System.out.println("Vehicle name: " + vehicleName );
 
+        initializeCompetitors();
+
+        playOneRound();
+    }
+
+    //round
+    private void playOneRound() {
+        System.out.println("New Round.");
+
+
+        for (Vehicle competitor : competitors) {
+
+            System.out.println("It's " + competitor.getName() + "'s turn.");
+            double speed = getVehicleAccelerationFromUser();
+            competitor.accelerate(speed);
+            System.out.println();
+        }
     }
 
     //track
@@ -57,6 +76,25 @@ public class Game {
         return tracks[trackNumber - 1];
     }
 
+    //competitors
+    public void initializeCompetitors() {
+        int playerCount = getPlayerCountFromUser();
+        for(int i = 0; i < playerCount; i++){
+            System.out.println("Preparing player "+ (i + 1)+ " for the race.");
+            Vehicle vehicle = new Vehicle();
+            vehicle.setName(getVehicleNameFromUser());
+            vehicle.setFuellevel(30);
+            vehicle.setMaxSpeed(300);
+            vehicle.setMileage(ThreadLocalRandom.current().nextDouble(8,15));
+            System.out.println("Fuel level for "+ vehicle.getName() + ": "+ vehicle.getFuellevel());
+            System.out.println("Max speed for "+ vehicle.getName() + ": "+ vehicle.getMaxSpeed());
+            System.out.println("Mileage for "+ vehicle.getName() + ": "+ vehicle.getMileage());
+
+            System.out.println();
+            competitors.add(vehicle);
+        }
+
+    }
 
     //number of players
     private int getPlayerCountFromUser() {
@@ -70,4 +108,11 @@ public class Game {
         System.out.println("Please enter vehicle name: ");
        return ScannerUtil.nextLine();
     }
+
+    //get acceleration
+    private double getVehicleAccelerationFromUser(){
+        System.out.println("Please enter the acceleration :");
+        return ScannerUtil.nextDoubleAndMoveToTheNextLine();
+    }
+
 }
