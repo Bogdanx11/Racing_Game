@@ -25,8 +25,15 @@ public class App {
             ((CheatingVehicles) cheatingVehicles).cheat();
         }
  */
-  Game game = new Game();
-        game.start();
+
+//  Game game = new Game();
+  //      game.start();
+
+        String email =" bogdan@yahoo.com";
+        String[] emailParts = email.split("@");
+
+        System.out.println("First part :" + emailParts[0]);
+        System.out.println("Second part :" + emailParts[1]);
 
 /**
         //autovehicul
