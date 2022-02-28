@@ -13,6 +13,7 @@ import org.example.vehicles.cheater.CheatingVehicles;
 public class App {
     public static void main(String[] args) {
 
+/**
         Vehicle cheatingVehicles = new CheatingVehicles();
         cheatingVehicles.setName("Cheater");
         cheatingVehicles.accelerate(60,1);
@@ -23,9 +24,10 @@ public class App {
 
             ((CheatingVehicles) cheatingVehicles).cheat();
         }
- /**  Game game = new Game();
+ */
+  Game game = new Game();
         game.start();
-*/
+
 /**
         //autovehicul
         Engine engine3 = new Engine();
