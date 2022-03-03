@@ -1,5 +1,6 @@
 package org.example.competitor;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Hulk implements Mobile {
@@ -39,4 +40,19 @@ public class Hulk implements Mobile {
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hulk hulk = (Hulk) o;
+        return Double.compare(hulk.totalTraveledDistance, totalTraveledDistance) == 0 && cooperative == hulk.cooperative && Objects.equals(name, hulk.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(totalTraveledDistance, cooperative, name);
+    }
 }
+
+

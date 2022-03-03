@@ -6,14 +6,18 @@ import org.example.competitor.vehicles.Car;
 import org.example.competitor.vehicles.Vehicle;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
 
     private Track[] tracks = new Track[3];
-
+    private Set<Mobile> outOfRaceCompetitors = new HashSet<>();
     private List<Mobile> competitors = new ArrayList<>();
+    private boolean winnerNotKnown = true;
+    private Track selectedTrack;
 
 
 
@@ -23,28 +27,15 @@ public class Game {
 
         initializeTracks();
 
-        Track selectedTrack = getSelectedTrackFromUser();
+        selectedTrack = getSelectedTrackFromUser();
 
         System.out.println("Selected Track: "+ selectedTrack.getName());
 
         initializeCompetitors();
 
-        playOneRound();
+        loopRounds();
     }
 
-    //round
-    private void playOneRound() {
-        System.out.println("New Round.");
-
-
-        for (Mobile competitor : competitors) {
-
-            System.out.println("It's " + competitor.getName() + "'s turn.");
-            double speed = getVehicleAccelerationFromUser();
-            competitor.accelerate(speed,1);
-            System.out.println();
-        }
-    }
 
     //track
     private void initializeTracks(){
@@ -115,6 +106,38 @@ public class Game {
     private double getVehicleAccelerationFromUser(){
         System.out.println("Please enter the acceleration :");
         return ScannerUtil.nextDoubleAndMoveToTheNextLine();
+    }
+
+
+    //round
+    private void playOneRound() {
+        System.out.println("New Round.");
+
+
+        for (Mobile competitor : competitors) {
+
+            System.out.println();
+            System.out.println("It's " + competitor.getName() + "'s turn.");
+            if(!competitor.canMove()){
+                System.out.println("Sorry, you are out of race..");
+                outOfRaceCompetitors.add(competitor);
+                continue;
+            }
+            double speed = getVehicleAccelerationFromUser();
+            competitor.accelerate(speed,1);
+            if(competitor.getTotalTraveledDistance() >= selectedTrack.getLength()){
+                System.out.println("The winner is :" + competitor.getName());
+                winnerNotKnown = false;
+                break;
+            }
+        }
+    }
+
+
+    private void loopRounds(){
+        while(winnerNotKnown && outOfRaceCompetitors.size() < competitors.size()) {
+            playOneRound();
+        }
     }
 
 }
