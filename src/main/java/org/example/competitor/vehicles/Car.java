@@ -1,6 +1,4 @@
-package org.example.vehicles;
-
-import org.example.Engine;
+package org.example.competitor.vehicles;
 
 public class Car extends Autovehicle {
 
@@ -30,4 +28,6 @@ public class Car extends Autovehicle {
                 ", DoorsNumber=" + DoorsNumber +
                 "} " + super.toString();
     }
+
+
 }

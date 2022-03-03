@@ -1,6 +1,4 @@
-package org.example.vehicles;
-
-import org.example.Engine;
+package org.example.competitor.vehicles;
 
 public abstract class Autovehicle extends Vehicle {
 

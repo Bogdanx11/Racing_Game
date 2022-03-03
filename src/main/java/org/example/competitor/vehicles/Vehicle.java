@@ -1,14 +1,18 @@
-package org.example.vehicles;
+package org.example.competitor.vehicles;
+
+import org.example.competitor.Mobile;
 
 import java.time.LocalDate;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Mobile {
 
 
     //static variable
     private static int totalVehicleCount;
 
-
+    public boolean canMove(){
+        return fuellevel > 0 && !damaged;
+    }
 
 
     //instance variables
@@ -106,18 +110,8 @@ public abstract class Vehicle {
             mileageMultiplier = speed / 100;
         }
 
-
-        //damage condition
-        if (damaged) {
-            System.out.println("You cannot accelerate, the car is broken!");
-            return 0;
-        }
-
-
-        //fuel level condition
-        if (fuellevel <= 0) {
-            System.out.println("You cannot accelerate.You ran out of gas.");
-            return 0;
+        if(!canMove()){
+            System.out.println("You cannot accelerate!!");
         }
 
 

@@ -1,8 +1,9 @@
 package org.example;
 
+import org.example.competitor.Mobile;
 import org.example.utils.ScannerUtil;
-import org.example.vehicles.Car;
-import org.example.vehicles.Vehicle;
+import org.example.competitor.vehicles.Car;
+import org.example.competitor.vehicles.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class Game {
 
     private Track[] tracks = new Track[3];
 
-    private List<Vehicle> competitors = new ArrayList<>();
+    private List<Mobile> competitors = new ArrayList<>();
 
 
 
@@ -36,11 +37,11 @@ public class Game {
         System.out.println("New Round.");
 
 
-        for (Vehicle competitor : competitors) {
+        for (Mobile competitor : competitors) {
 
             System.out.println("It's " + competitor.getName() + "'s turn.");
             double speed = getVehicleAccelerationFromUser();
-            competitor.accelerate(speed);
+            competitor.accelerate(speed,1);
             System.out.println();
         }
     }

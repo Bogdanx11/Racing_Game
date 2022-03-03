@@ -1,14 +1,6 @@
 package org.example;
 
 
-import org.example.vehicles.Autovehicle;
-import org.example.vehicles.Car;
-import org.example.vehicles.Vehicle;
-import org.example.vehicles.cheater.CheatingVehicles;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Hello world!
  */

@@ -1,6 +1,4 @@
-package org.example;
-
-import org.example.vehicles.Autovehicle;
+package org.example.competitor.vehicles;
 
 public class Mechanic {
     public void repair(Autovehicle autovehicle){

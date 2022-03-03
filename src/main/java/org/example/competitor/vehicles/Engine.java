@@ -1,4 +1,4 @@
-package org.example;
+package org.example.competitor.vehicles;
 
 public class Engine {
   private  String manufacturer;
