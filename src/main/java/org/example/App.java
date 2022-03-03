@@ -6,6 +6,9 @@ import org.example.vehicles.Car;
 import org.example.vehicles.Vehicle;
 import org.example.vehicles.cheater.CheatingVehicles;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Hello world!
  */
@@ -27,6 +30,8 @@ public class App {
 
         Game game = new Game();
         game.start();
+        
+
 
         /**
          String email =" bogdan@yahoo.com";

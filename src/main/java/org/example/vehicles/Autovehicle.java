@@ -2,7 +2,7 @@ package org.example.vehicles;
 
 import org.example.Engine;
 
-public class Autovehicle extends Vehicle {
+public abstract class Autovehicle extends Vehicle {
 
     private Engine engine;
 

@@ -2,7 +2,7 @@ package org.example.vehicles;
 
 import java.time.LocalDate;
 
-public class Vehicle {
+public abstract class Vehicle {
 
 
     //static variable

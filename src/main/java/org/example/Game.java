@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.utils.ScannerUtil;
+import org.example.vehicles.Car;
 import org.example.vehicles.Vehicle;
 
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ public class Game {
         int playerCount = getPlayerCountFromUser();
         for(int i = 0; i < playerCount; i++){
             System.out.println("Preparing player "+ (i + 1)+ " for the race.");
-            Vehicle vehicle = new Vehicle();
+            Vehicle vehicle = new Car();
             vehicle.setName(getVehicleNameFromUser());
             vehicle.setFuellevel(30);
             vehicle.setMaxSpeed(300);
