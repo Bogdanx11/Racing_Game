@@ -6,15 +6,22 @@ public class ScannerUtil {
  private  static final Scanner SCANNER = new Scanner(System.in);
 
     public static int nextIntAndMoveToTheNextLine() {
-        int integer = SCANNER.nextInt();
-        SCANNER.nextLine();
-        return integer;
+        try {
+            return  SCANNER.nextInt();
+        } finally {
+            SCANNER.nextLine();
+        }
+
+
     }
 
     public static double nextDoubleAndMoveToTheNextLine(){
-        double value = SCANNER.nextDouble();
-        SCANNER.nextLine();
-        return value;
+        try {
+            return SCANNER.nextDouble();
+        } finally {
+            SCANNER.nextLine();
+        }
+
     }
 
     public static String nextLine() {

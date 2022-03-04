@@ -5,10 +5,7 @@ import org.example.utils.ScannerUtil;
 import org.example.competitor.vehicles.Car;
 import org.example.competitor.vehicles.Vehicle;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
@@ -22,7 +19,7 @@ public class Game {
 
 
     //start
-    public void start() {
+    public void start() throws Exception {
         System.out.println("Welcome to the Racing Game");
 
         initializeTracks();
@@ -63,10 +60,19 @@ public class Game {
     }
 
     //track choice
-    private Track getSelectedTrackFromUser(){
+    private Track getSelectedTrackFromUser() throws Exception {
         System.out.println("Please select a track :");
-        int trackNumber = ScannerUtil.nextIntAndMoveToTheNextLine();
-        return tracks[trackNumber - 1];
+        try {
+            int trackNumber = ScannerUtil.nextIntAndMoveToTheNextLine();
+            return tracks[trackNumber - 1];
+        }catch (InputMismatchException e){
+            throw new Exception("You have entered an invalid value");
+        }catch (ArrayIndexOutOfBoundsException e){
+            throw new RuntimeException("You have entered an invalid number");
+        }
+
+
+
     }
 
     //competitors
@@ -103,14 +109,22 @@ public class Game {
     }
 
     //get acceleration
-    private double getVehicleAccelerationFromUser(){
+    private double getVehicleAccelerationFromUser() throws Exception{
         System.out.println("Please enter the acceleration :");
-        return ScannerUtil.nextDoubleAndMoveToTheNextLine();
+
+        try {
+            return ScannerUtil.nextDoubleAndMoveToTheNextLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Invalid value. Please try again!");
+        return getVehicleAccelerationFromUser();
+        }
+
     }
 
 
     //round
-    private void playOneRound() {
+    private void playOneRound() throws Exception {
         System.out.println("New Round.");
 
 
@@ -134,7 +148,7 @@ public class Game {
     }
 
 
-    private void loopRounds(){
+    private void loopRounds() throws Exception {
         while(winnerNotKnown && outOfRaceCompetitors.size() < competitors.size()) {
             playOneRound();
         }
