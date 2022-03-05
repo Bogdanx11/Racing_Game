@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.competitor.Mobile;
+import org.example.competitor.MobileComparator;
 import org.example.utils.ScannerUtil;
 import org.example.competitor.vehicles.Car;
 import org.example.competitor.vehicles.Vehicle;
@@ -31,6 +32,8 @@ public class Game {
         initializeCompetitors();
 
         loopRounds();
+
+        processRankings();
     }
 
 
@@ -152,6 +155,18 @@ public class Game {
         while(winnerNotKnown && outOfRaceCompetitors.size() < competitors.size()) {
             playOneRound();
         }
+    }
+
+    //comparator
+    public void processRankings(){
+
+        competitors.sort(Collections.reverseOrder(new MobileComparator()));
+        System.out.println("Rankings :");
+
+        for(int i =0 ; i< competitors.size(); i++){
+            System.out.println((i+1) + "." + competitors.get(i).getName() + " : " + competitors.get(i).getTotalTraveledDistance() );
+        }
+
     }
 
 }
