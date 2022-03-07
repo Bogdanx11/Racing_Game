@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.competitor.Mobile;
 import org.example.competitor.MobileComparator;
+import org.example.persistance.FileRankingRepository;
 import org.example.utils.ScannerUtil;
 import org.example.competitor.vehicles.Car;
 import org.example.competitor.vehicles.Vehicle;
@@ -17,6 +18,7 @@ public class Game {
     private boolean winnerNotKnown = true;
     private Track selectedTrack;
 
+    private FileRankingRepository rankingRepository = new FileRankingRepository();
 
 
     //start
@@ -165,8 +167,12 @@ public class Game {
 
         for(int i =0 ; i< competitors.size(); i++){
             System.out.println((i+1) + "." + competitors.get(i).getName() + " : " + competitors.get(i).getTotalTraveledDistance() );
+
+            rankingRepository.addRankingItem(i+1,competitors.get(i).getName(),competitors.get(i).getTotalTraveledDistance());
+
         }
 
+        rankingRepository.close();
     }
 
 }
