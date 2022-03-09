@@ -1,4 +1,4 @@
-package org.example.competitor.vehicles;
+package org.example.domain.competitor.vehicles;
 
 public class Mechanic {
     public void repair(Autovehicle autovehicle){

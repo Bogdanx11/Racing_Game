@@ -1,4 +1,4 @@
-package org.example.competitor.vehicles;
+package org.example.domain.competitor.vehicles;
 
 public abstract class Autovehicle extends Vehicle {
 

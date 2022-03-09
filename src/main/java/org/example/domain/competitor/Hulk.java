@@ -1,4 +1,4 @@
-package org.example.competitor;
+package org.example.domain.competitor;
 
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;

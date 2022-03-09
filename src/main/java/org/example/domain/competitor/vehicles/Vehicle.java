@@ -1,6 +1,6 @@
-package org.example.competitor.vehicles;
+package org.example.domain.competitor.vehicles;
 
-import org.example.competitor.Mobile;
+import org.example.domain.competitor.Mobile;
 
 import java.time.LocalDate;
 import java.util.Objects;

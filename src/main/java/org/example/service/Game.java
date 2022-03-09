@@ -1,11 +1,16 @@
-package org.example;
+package org.example.service;
 
-import org.example.competitor.Mobile;
-import org.example.competitor.MobileComparator;
+import org.example.controller.StdInController;
+import org.example.controller.UserInputController;
+import org.example.domain.Track;
+import org.example.domain.competitor.Hulk;
+import org.example.domain.competitor.Mobile;
+import org.example.domain.competitor.MobileComparator;
+import org.example.domain.competitor.vehicles.cheater.CheatingVehicles;
 import org.example.persistance.FileRankingRepository;
-import org.example.utils.ScannerUtil;
-import org.example.competitor.vehicles.Car;
-import org.example.competitor.vehicles.Vehicle;
+
+import org.example.domain.competitor.vehicles.Car;
+import org.example.domain.competitor.vehicles.Vehicle;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -20,6 +25,7 @@ public class Game {
 
     private FileRankingRepository rankingRepository = new FileRankingRepository();
 
+    private UserInputController userInputController = new StdInController();
 
     //start
     public void start() throws Exception {
@@ -66,9 +72,9 @@ public class Game {
 
     //track choice
     private Track getSelectedTrackFromUser() throws Exception {
-        System.out.println("Please select a track :");
+
         try {
-            int trackNumber = ScannerUtil.nextIntAndMoveToTheNextLine();
+            int trackNumber = userInputController.getSelectedTrack();
             return tracks[trackNumber - 1];
         }catch (InputMismatchException e){
             throw new Exception("You have entered an invalid value");
@@ -82,17 +88,11 @@ public class Game {
 
     //competitors
     public void initializeCompetitors() {
-        int playerCount = getPlayerCountFromUser();
+        int playerCount = userInputController.getPlayerCount();
         for(int i = 0; i < playerCount; i++){
             System.out.println("Preparing player "+ (i + 1)+ " for the race.");
             Vehicle vehicle = new Car();
-            vehicle.setName(getVehicleNameFromUser());
-            vehicle.setFuellevel(30);
-            vehicle.setMaxSpeed(300);
-            vehicle.setMileage(ThreadLocalRandom.current().nextDouble(8,15));
-            System.out.println("Fuel level for "+ vehicle.getName() + ": "+ vehicle.getFuellevel());
-            System.out.println("Max speed for "+ vehicle.getName() + ": "+ vehicle.getMaxSpeed());
-            System.out.println("Mileage for "+ vehicle.getName() + ": "+ vehicle.getMileage());
+            setCommonVehicleProperties(vehicle);
 
             System.out.println();
             competitors.add(vehicle);
@@ -100,36 +100,25 @@ public class Game {
 
     }
 
-    //number of players
-    private int getPlayerCountFromUser() {
-        System.out.println("Please enter number of players : ");
-        return ScannerUtil.nextIntAndMoveToTheNextLine();
+    private void setCommonVehicleProperties(Vehicle vehicle) {
+        vehicle.setName(userInputController.getVehicleName());
+        vehicle.setFuellevel(30);
+        vehicle.setMaxSpeed(300);
+        vehicle.setMileage(ThreadLocalRandom.current().nextDouble(8,15));
+        System.out.println("Fuel level for "+ vehicle.getName() + ": "+ vehicle.getFuellevel());
+        System.out.println("Max speed for "+ vehicle.getName() + ": "+ vehicle.getMaxSpeed());
+        System.out.println("Mileage for "+ vehicle.getName() + ": "+ vehicle.getMileage());
     }
 
-
-    //vehicle name
-    private String getVehicleNameFromUser(){
-        System.out.println("Please enter vehicle name: ");
-       return ScannerUtil.nextLine();
-    }
 
     //get acceleration
-    private double getVehicleAccelerationFromUser() throws Exception{
-        System.out.println("Please enter the acceleration :");
 
-        try {
-            return ScannerUtil.nextDoubleAndMoveToTheNextLine();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Invalid value. Please try again!");
-        return getVehicleAccelerationFromUser();
-        }
 
-    }
+
 
 
     //round
-    private void playOneRound() throws Exception {
+    private void playOneRound(){
         System.out.println("New Round.");
 
 
@@ -142,7 +131,7 @@ public class Game {
                 outOfRaceCompetitors.add(competitor);
                 continue;
             }
-            double speed = getVehicleAccelerationFromUser();
+            double speed = userInputController.getVehicleAccelerationFromUser();
             competitor.accelerate(speed,1);
             if(competitor.getTotalTraveledDistance() >= selectedTrack.getLength()){
                 System.out.println("The winner is :" + competitor.getName());
@@ -153,7 +142,7 @@ public class Game {
     }
 
 
-    private void loopRounds() throws Exception {
+    private void loopRounds(){
         while(winnerNotKnown && outOfRaceCompetitors.size() < competitors.size()) {
             playOneRound();
         }
@@ -173,6 +162,40 @@ public class Game {
         }
 
         rankingRepository.close();
+    }
+
+
+    private void displayCompetitorsType(){
+        System.out.println("How would you like to enter the race ?");
+        System.out.println("1.Using a car.");
+        System.out.println("2.I feel lucky. I will try Hulk.");
+    }
+
+    private Mobile createCompetitor(){
+        displayCompetitorsType();
+        int competitorType = userInputController.getCompetitorType();
+
+        switch(competitorType) {
+            case 0:
+                CheatingVehicles cheatingVehicles = new CheatingVehicles();
+                setCommonVehicleProperties(cheatingVehicles);
+                return cheatingVehicles;
+
+            case 1:
+                Car car = new Car();
+                setCommonVehicleProperties(car);
+                return car;
+
+            case 2:
+                System.out.println("Hulk is here!");
+                Hulk hulk = new Hulk();
+                return hulk;
+
+            default:
+                System.out.println("Please select a valid option ");
+               return createCompetitor();
+        }
+
     }
 
 }
