@@ -12,6 +12,7 @@ import org.example.persistance.FileRankingRepository;
 import org.example.domain.competitor.vehicles.Car;
 import org.example.domain.competitor.vehicles.Vehicle;
 
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -23,19 +24,21 @@ public class Game {
     private boolean winnerNotKnown = true;
     private Track selectedTrack;
 
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+
     private FileRankingRepository rankingRepository = new FileRankingRepository();
 
     private UserInputController userInputController = new StdInController();
 
     //start
     public void start() throws Exception {
-        System.out.println("Welcome to the Racing Game");
+        System.out.println("Welcome to the \"Racing Game\" ! \uD83D\uDE97");
+        System.out.println();
 
         initializeTracks();
 
         selectedTrack = getSelectedTrackFromUser();
 
-        System.out.println("Selected Track: "+ selectedTrack.getName());
 
         initializeCompetitors();
 
@@ -68,6 +71,7 @@ public class Game {
             System.out.println((i+1) +"."+tracks[i].getName()+": "+tracks[i].getLength());
             }
         }
+        System.out.println();
     }
 
     //track choice
@@ -90,7 +94,8 @@ public class Game {
     public void initializeCompetitors() {
         int playerCount = userInputController.getPlayerCount();
         for(int i = 0; i < playerCount; i++){
-            System.out.println("Preparing player "+ (i + 1)+ " for the race.");
+            System.out.println("** Preparing player "+ (i + 1)+ " for the race. **");
+            System.out.println();
             Mobile mobile = createCompetitor();
 
             System.out.println();
@@ -106,7 +111,7 @@ public class Game {
         vehicle.setMileage(ThreadLocalRandom.current().nextDouble(8,15));
         System.out.println("Fuel level for "+ vehicle.getName() + ": "+ vehicle.getFuellevel());
         System.out.println("Max speed for "+ vehicle.getName() + ": "+ vehicle.getMaxSpeed());
-        System.out.println("Mileage for "+ vehicle.getName() + ": "+ vehicle.getMileage());
+        System.out.println("Mileage for "+ vehicle.getName() + ": "+ df.format(vehicle.getMileage()));
     }
 
 
@@ -118,7 +123,8 @@ public class Game {
 
     //round
     private void playOneRound(){
-        System.out.println("New Round.");
+        System.out.println();
+        System.out.println("New Round \u2605");
 
 
         for (Mobile competitor : competitors) {
@@ -133,6 +139,7 @@ public class Game {
             double speed = userInputController.getVehicleAccelerationFromUser();
             competitor.accelerate(speed,1);
             if(competitor.getTotalTraveledDistance() >= selectedTrack.getLength()){
+                System.out.println();
                 System.out.println("The winner is :" + competitor.getName());
                 winnerNotKnown = false;
                 break;
