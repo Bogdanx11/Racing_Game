@@ -16,9 +16,6 @@ public abstract class Autovehicle extends Vehicle {
     }
 
 
-    public Engine getEngine() {
-        return engine;
-    }
 
     public void setEngine(Engine engine) {
         this.engine = engine;

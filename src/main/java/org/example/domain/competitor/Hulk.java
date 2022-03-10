@@ -7,7 +7,7 @@ public class Hulk implements Mobile {
 
     private double totalTraveledDistance;
     private boolean cooperative;
-    private String name;
+    private  String name;
 
 
     public Hulk() {

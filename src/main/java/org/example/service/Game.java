@@ -18,17 +18,17 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
 
-    private Track[] tracks = new Track[3];
-    private Set<Mobile> outOfRaceCompetitors = new HashSet<>();
-    private List<Mobile> competitors = new ArrayList<>();
+    private final Track[] tracks = new Track[3];
+    private final Set<Mobile> outOfRaceCompetitors = new HashSet<>();
+    private final List<Mobile> competitors = new ArrayList<>();
     private boolean winnerNotKnown = true;
     private Track selectedTrack;
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
-    private FileRankingRepository rankingRepository = new FileRankingRepository();
+    private final FileRankingRepository rankingRepository = new FileRankingRepository();
 
-    private UserInputController userInputController = new StdInController();
+    private final UserInputController userInputController = new StdInController();
 
     //start
     public void start() throws Exception {
@@ -115,9 +115,6 @@ public class Game {
     }
 
 
-    //get acceleration
-
-
 
 
 
@@ -194,8 +191,7 @@ public class Game {
 
             case 2:
                 System.out.println("Hulk is here!");
-                Hulk hulk = new Hulk();
-                return hulk;
+                return new Hulk();
 
             default:
                 System.out.println("Please select a valid option ");

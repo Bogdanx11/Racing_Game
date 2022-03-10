@@ -3,14 +3,14 @@ package org.example.persistance;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.management.BufferPoolMXBean;
+
 
 public class FileRankingRepository implements RankingsRepository{
 
-    private String filePath = "target/rankings_" + System.currentTimeMillis();
-    private BufferedWriter bufferedWriter;
+    private final BufferedWriter bufferedWriter;
 
     public FileRankingRepository() {
+        String filePath = "target/rankings_" + System.currentTimeMillis();
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(filePath));
         } catch (IOException e) {

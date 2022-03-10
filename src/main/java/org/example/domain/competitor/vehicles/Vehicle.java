@@ -27,9 +27,7 @@ public abstract class Vehicle implements Mobile {
 
 
     //getter for read-only variable totalVehicleCount
-    public static int getTotalVehicleCount() {
-        return totalVehicleCount;
-    }
+
 
 
     //getter and setter for variables
@@ -57,13 +55,6 @@ public abstract class Vehicle implements Mobile {
         this.fuellevel = fuellevel;
     }
 
-    public boolean isDamaged(boolean b) {
-        return damaged;
-    }
-
-    public void setDamaged(boolean damaged) {
-        this.damaged = damaged;
-    }
 
     public double getTotalTraveledDistance() {
         return totalTraveledDistance;
@@ -81,9 +72,6 @@ public abstract class Vehicle implements Mobile {
         this.maxSpeed = maxSpeed;
     }
 
-    public LocalDate getManufacturingDate() {
-        return manufacturingDate;
-    }
 
     public void setManufacturingDate(LocalDate manufacturingDate) {
         this.manufacturingDate = manufacturingDate;
@@ -153,12 +141,7 @@ public abstract class Vehicle implements Mobile {
                 '}';
     }
 
-    //reset
-    protected Vehicle reset(){
-        totalTraveledDistance = 0;
-        damaged = false;
-        return this;
-    }
+
 
     @Override
     public boolean equals(Object o) {
