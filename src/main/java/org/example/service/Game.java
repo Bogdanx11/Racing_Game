@@ -91,11 +91,10 @@ public class Game {
         int playerCount = userInputController.getPlayerCount();
         for(int i = 0; i < playerCount; i++){
             System.out.println("Preparing player "+ (i + 1)+ " for the race.");
-            Vehicle vehicle = new Car();
-            setCommonVehicleProperties(vehicle);
+            Mobile mobile = createCompetitor();
 
             System.out.println();
-            competitors.add(vehicle);
+            competitors.add(mobile);
         }
 
     }
